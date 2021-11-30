@@ -111,6 +111,15 @@ void navigateTo(context , widget)
     context,
     MaterialPageRoute(builder: (context) =>widget ,));
 }
+
+
+void navigateToAndRemove(context , widget)
+{
+  Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) =>widget ,));
+}
+
 Widget buildArticleItem(Map model,context) => InkWell(
   onTap: (){
     Navigator.push(

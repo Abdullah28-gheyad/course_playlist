@@ -1,3 +1,4 @@
+import 'package:firstproject/layout/shop_layout/shop_layout_screen.dart';
 import 'package:firstproject/modules/shop_app/shop_login/cubit/cubit.dart';
 import 'package:firstproject/modules/shop_app/shop_login/cubit/states.dart';
 import 'package:firstproject/modules/shop_app/shop_register/shop_register_screen.dart';
@@ -18,11 +19,29 @@ class ShopLoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context)=>ShopLoginCubit(),
       child: BlocConsumer<ShopLoginCubit,ShopLoginStates>(
-        listener: (context , state){},
+        listener: (context , state){
+          if (state is ShopLoginSuccessState)
+            {
+              if (state.model.status)
+                {
+                  navigateToAndRemove(context, ShopLayoutScreen()) ;
+                }
+              else
+                {
+                  print ('please check your email and password') ;
+                }
+            }
+
+        },
         builder: (context , state){
           var cubit = ShopLoginCubit.get(context) ;
           return Scaffold(
-            appBar: AppBar(),
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+
+            ),
             body: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Center(
