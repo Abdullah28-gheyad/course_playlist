@@ -37,9 +37,10 @@ class MyApp extends StatelessWidget //abst class  //inhrt wid
       providers: [
         BlocProvider(
         create: (BuildContext context) => NewsCubit()
-      ..getBusinessData()
-      ..getSportsData()
-      ..getScienceData(),),
+      // ..getBusinessData()
+      // ..getSportsData()
+      // ..getScienceData(),),
+        ),
         BlocProvider(create: (BuildContext context) =>ShopAppCubit()),
       ],
         child: BlocConsumer<NewsCubit, NewsAppStates>(

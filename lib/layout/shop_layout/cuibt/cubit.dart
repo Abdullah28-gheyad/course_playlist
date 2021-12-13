@@ -1,8 +1,12 @@
 import 'package:firstproject/layout/shop_layout/cuibt/states.dart';
+import 'package:firstproject/models/shop_app/home_model.dart';
 import 'package:firstproject/modules/shop_app/category_screen.dart';
 import 'package:firstproject/modules/shop_app/favorite_screen.dart';
 import 'package:firstproject/modules/shop_app/home_screen.dart';
 import 'package:firstproject/modules/shop_app/settings_screen.dart';
+import 'package:firstproject/shared/components/constants.dart';
+import 'package:firstproject/shared/network/remote/dio_helper.dart';
+import 'package:firstproject/shared/network/remote/endPoints.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,4 +28,20 @@ class ShopAppCubit extends Cubit <ShopAppStates>
         ShopFavoriteScreen() ,
         ShopSettingsScreen()
       ] ;
+
+  HomeModel homeModel ;
+  void getHomeData()
+  {
+    DioHelper.getData(path: HOME ,authorization: token)
+    .then((value) {
+
+      homeModel = HomeModel.fromJson(value.data) ;
+      print (homeModel.data.products[0].image) ;
+      emit(ShopAppGetHomeDataSuccessState()) ;
+    })
+    .catchError((error){
+      print (error.toString()) ;
+      emit(ShopAppGetHomeDataErrorState()) ;
+    });
+  }
 }

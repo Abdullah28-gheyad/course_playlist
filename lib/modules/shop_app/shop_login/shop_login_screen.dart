@@ -1,3 +1,4 @@
+import 'package:firstproject/layout/shop_layout/cuibt/cubit.dart';
 import 'package:firstproject/layout/shop_layout/shop_layout_screen.dart';
 import 'package:firstproject/modules/shop_app/shop_login/cubit/cubit.dart';
 import 'package:firstproject/modules/shop_app/shop_login/cubit/states.dart';
@@ -24,6 +25,7 @@ class ShopLoginScreen extends StatelessWidget {
             {
               if (state.model.status)
                 {
+                  ShopAppCubit.get(context).getHomeData() ;
                   navigateToAndRemove(context, ShopLayoutScreen()) ;
                 }
               else
