@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:firstproject/layout/shop_layout/cuibt/cubit.dart';
 import 'package:firstproject/layout/shop_layout/shop_layout_screen.dart';
 import 'package:firstproject/modules/shop_app/shop_login/cubit/cubit.dart';
@@ -98,13 +99,17 @@ class ShopLoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        customButton(
-                          function: () {
-                            if (formKey.currentState.validate()) {
-                              cubit.userLogin(email: emailController.text, password: passwordController.text);
-                            }
-                          },
-                          text: 'Login',
+                        ConditionalBuilder(
+                         builder: (context)=>customButton(
+                           function: () {
+                             if (formKey.currentState.validate()) {
+                               cubit.userLogin(email: emailController.text, password: passwordController.text);
+                             }
+                           },
+                           text: 'Login',
+                         ),
+                          fallback: (context)=>Center(child: CircularProgressIndicator()),
+                          condition: state is !ShopLoginLoadingState,
                         ),
                         SizedBox(
                           height: 10,

@@ -25,7 +25,7 @@ class DioHelper
     dio.options.headers={
       'Authorization':authorization ,
       'Content-Type':'application/json' ,
-      'lang':'ar' ,
+      'lang':'en' ,
     } ;
     return  await dio.get(path,queryParameters:query ) ;
   }
@@ -42,7 +42,7 @@ class DioHelper
     dio.options.headers={
       'Authorization':authorization ,
       'Content-Type':'application/json' ,
-      'lang':'ar' ,
+      'lang':'en' ,
     } ;
     return await dio.post(path,queryParameters: query ,data: data ) ;
   }

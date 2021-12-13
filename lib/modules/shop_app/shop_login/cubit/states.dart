@@ -11,4 +11,8 @@ class ShopLoginSuccessState extends ShopLoginStates {
 
 class ShopLoginErrorState extends ShopLoginStates {}
 
+class ShopLoginLoadingState extends ShopLoginStates {}
+
+
+
 class ChangePasswordSecureState extends ShopLoginStates {}

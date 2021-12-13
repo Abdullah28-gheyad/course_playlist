@@ -28,6 +28,13 @@ class ShopAppCubit extends Cubit <ShopAppStates>
         ShopFavoriteScreen() ,
         ShopSettingsScreen()
       ] ;
+  List <String> titles =
+  [
+    'Home' ,
+    'Categories' ,
+    'Favorites' ,
+    'Settings'
+  ] ;
 
   HomeModel homeModel ;
   void getHomeData()
