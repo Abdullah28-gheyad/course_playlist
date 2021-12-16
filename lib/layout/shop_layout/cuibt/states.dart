@@ -11,3 +11,9 @@ class ShopAppChangeBottomNavState extends ShopAppStates {}
 class ShopAppGetHomeDataSuccessState extends ShopAppStates {}
 
 class ShopAppGetHomeDataErrorState extends ShopAppStates {}
+
+class ShopAppGetCategoriesDataSuccessState extends ShopAppStates {}
+
+class ShopAppGetCategoriesDataErrorState extends ShopAppStates {}
+
+

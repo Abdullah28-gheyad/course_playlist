@@ -1,4 +1,5 @@
 import 'package:firstproject/layout/shop_layout/cuibt/states.dart';
+import 'package:firstproject/models/shop_app/category_model.dart';
 import 'package:firstproject/models/shop_app/home_model.dart';
 import 'package:firstproject/modules/shop_app/category_screen.dart';
 import 'package:firstproject/modules/shop_app/favorite_screen.dart';
@@ -51,4 +52,21 @@ class ShopAppCubit extends Cubit <ShopAppStates>
       emit(ShopAppGetHomeDataErrorState()) ;
     });
   }
+
+  CategoryModel categoryModel;
+  void getCategoryData()
+  {
+    DioHelper.getData(path: CATEGORY )
+        .then((value) {
+      categoryModel = CategoryModel.fromJson(value.data) ;
+      print (value.data) ;
+      emit(ShopAppGetCategoriesDataSuccessState()) ;
+    })
+        .catchError((error){
+      print (error.toString()) ;
+      emit(ShopAppGetCategoriesDataErrorState()) ;
+    });
+  }
+
+
 }
