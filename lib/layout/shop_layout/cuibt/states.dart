@@ -16,4 +16,9 @@ class ShopAppGetCategoriesDataSuccessState extends ShopAppStates {}
 
 class ShopAppGetCategoriesDataErrorState extends ShopAppStates {}
 
+class ShopAppChangeFavoriteSuccessState extends ShopAppStates {}
+
+class ShopAppChangeFavoriteErrorState extends ShopAppStates {}
+
+
 
