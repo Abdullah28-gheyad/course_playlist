@@ -79,7 +79,7 @@ class ShopFavoriteScreen extends StatelessWidget {
                     SizedBox(
                       width: 5,
                     ),
-
+                      if (productModel.discount!=0)
                       Text(
                         productModel.oldPrice.toString(),
                         style: TextStyle(
