@@ -83,7 +83,7 @@ class ShopHomeScreen extends StatelessWidget {
                     children: List.generate(
                         cubit.homeModel.data.products.length,
                         (index) =>
-                            buildItem(cubit.homeModel.data.products[index],context),),
+                            buildProductItem(cubit.homeModel.data.products[index],context),),
                   ),
                 )
               ],
@@ -94,7 +94,7 @@ class ShopHomeScreen extends StatelessWidget {
     );
   }
 
-  Widget buildItem(ProductModel model,context) => Container(
+  Widget buildProductItem(ProductModel model,context) => Container(
         color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

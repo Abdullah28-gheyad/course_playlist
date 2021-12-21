@@ -1,6 +1,7 @@
 import 'package:firstproject/layout/shop_layout/cuibt/states.dart';
 import 'package:firstproject/models/shop_app/category_model.dart';
 import 'package:firstproject/models/shop_app/change_favorite_model.dart';
+import 'package:firstproject/models/shop_app/favorite_model.dart';
 import 'package:firstproject/models/shop_app/home_model.dart';
 import 'package:firstproject/modules/shop_app/category_screen.dart';
 import 'package:firstproject/modules/shop_app/favorite_screen.dart';
@@ -85,6 +86,7 @@ class ShopAppCubit extends Cubit <ShopAppStates>
       changeFavoriteModel = ChangeFavoriteModel.fromJson(value.data) ;
       print (changeFavoriteModel.message) ;
       emit(ShopAppChangeFavoriteSuccessState()) ;
+      getFavoriteData() ;
     })
     .catchError((error){
       print (error) ;
@@ -92,5 +94,20 @@ class ShopAppCubit extends Cubit <ShopAppStates>
     });
   }
 
+  FavoriteModel favoriteModel;
+  void getFavoriteData()
+  {
+    emit(ShopAppGetFavoriteDataLoadingState()) ;
+    DioHelper.getData(path: FAVORITE , authorization: token )
+        .then((value) {
+      favoriteModel = FavoriteModel.fromJson(value.data) ;
+      print (value.data) ;
+      emit(ShopAppGetFavoriteDataSuccessState()) ;
+    })
+        .catchError((error){
+      print (error.toString()) ;
+      emit(ShopAppGetFavoriteDataErrorState()) ;
+    });
+  }
 
 }
