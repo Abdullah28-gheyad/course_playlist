@@ -28,6 +28,7 @@ class ShopLoginScreen extends StatelessWidget {
                 {
                   ShopAppCubit.get(context).getHomeData() ;
                   ShopAppCubit.get(context).getFavoriteData() ;
+                  ShopAppCubit.get(context).getProfileData() ;
                   navigateToAndRemove(context, ShopLayoutScreen()) ;
                 }
               else

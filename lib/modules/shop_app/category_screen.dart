@@ -16,7 +16,7 @@ class ShopCategoryScreen extends StatelessWidget {
         return ListView.separated(
             physics: BouncingScrollPhysics(),
             itemBuilder: (context,index)=>buildCategoryItem(cubit.categoryModel.data.data[index]),
-            separatorBuilder: (context,index)=>Divider(height: 1,color: Colors.grey[300],),
+            separatorBuilder: (context,index)=>Divider(height: 1,color: Colors.grey,),
             itemCount: cubit.categoryModel.data.data.length
         );
       },

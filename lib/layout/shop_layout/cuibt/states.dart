@@ -26,6 +26,12 @@ class ShopAppGetFavoriteDataErrorState extends ShopAppStates {}
 
 class ShopAppGetFavoriteDataLoadingState extends ShopAppStates {}
 
+class ShopAppGetProfileDataSuccessState extends ShopAppStates {}
+
+class ShopAppGetProfileDataErrorState extends ShopAppStates {}
+
+
+
 
 
 

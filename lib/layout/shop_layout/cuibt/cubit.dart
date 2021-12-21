@@ -3,6 +3,7 @@ import 'package:firstproject/models/shop_app/category_model.dart';
 import 'package:firstproject/models/shop_app/change_favorite_model.dart';
 import 'package:firstproject/models/shop_app/favorite_model.dart';
 import 'package:firstproject/models/shop_app/home_model.dart';
+import 'package:firstproject/models/shop_app/shop_login_class.dart';
 import 'package:firstproject/modules/shop_app/category_screen.dart';
 import 'package:firstproject/modules/shop_app/favorite_screen.dart';
 import 'package:firstproject/modules/shop_app/home_screen.dart';
@@ -107,6 +108,21 @@ class ShopAppCubit extends Cubit <ShopAppStates>
         .catchError((error){
       print (error.toString()) ;
       emit(ShopAppGetFavoriteDataErrorState()) ;
+    });
+  }
+
+  ShopLoginModel userModel;
+  void getProfileData()
+  {
+    DioHelper.getData(path: PROFILE , authorization: token )
+        .then((value) {
+      userModel = ShopLoginModel.fromJson(value.data) ;
+      print (value.data) ;
+      emit(ShopAppGetProfileDataSuccessState()) ;
+    })
+        .catchError((error){
+      print (error.toString()) ;
+      emit(ShopAppGetProfileDataErrorState()) ;
     });
   }
 
