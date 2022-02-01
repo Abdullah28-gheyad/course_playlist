@@ -1,6 +1,6 @@
 import 'package:firstproject/layout/shop_layout/cuibt/cubit.dart';
 import 'package:firstproject/layout/shop_layout/cuibt/states.dart';
-import 'package:firstproject/modules/shop_app/search_screen.dart';
+import 'package:firstproject/modules/shop_app/shop_search/search_screen.dart';
 import 'package:firstproject/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
