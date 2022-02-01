@@ -30,6 +30,12 @@ class ShopAppGetProfileDataSuccessState extends ShopAppStates {}
 
 class ShopAppGetProfileDataErrorState extends ShopAppStates {}
 
+class ShopAppUpdateProfileDataSuccessState extends ShopAppStates {}
+
+class ShopAppUpdateProfileDataLoadingState extends ShopAppStates {}
+
+class ShopAppUpdateProfileDataErrorState extends ShopAppStates {}
+
 
 
 

@@ -27,48 +27,61 @@ class ShopSettingsScreen extends StatelessWidget {
           child: ConditionalBuilder(
             condition:cubit.userModel!=null,
             fallback: (context)=>Center(child: CircularProgressIndicator()),
-            builder: (context)=>Column(
-              children: [
-                customTextFormField(
-                    controller: nameController,
-                    type: TextInputType.text,
-                    validate: (String value)
-                    {
-                      if (value.isEmpty)
-                        return 'name cannot be empty' ;
-                      return null ;
-                    },
-                    label: 'Name',
-                    prfixIcon: Icons.person) ,
-                SizedBox(height: 10,) ,
-                customTextFormField(
-                    controller: emailController,
-                    type: TextInputType.emailAddress,
-                    validate: (String value)
-                    {
-                      if (value.isEmpty)
-                        return 'email cannot be empty' ;
-                      return null ;
-                    },
-                    label: 'Email',
-                    prfixIcon: Icons.email) ,
-                SizedBox(height: 10,) ,
-                customTextFormField(
-                    controller: phoneController,
-                    type: TextInputType.number,
-                    validate: (String value)
-                    {
-                      if (value.isEmpty)
-                        return 'phone cannot be empty' ;
-                      return null ;
-                    },
-                    label: 'Phone',
-                    prfixIcon: Icons.phone) ,
-                SizedBox(height: 10,) ,
-                customButton(function: (){
-                  navigateToAndRemove(context, ShopLoginScreen()) ;
-                }, text: 'LOGOUT')
-              ],
+            builder: (context)=>Center(
+               child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    if (state is ShopAppUpdateProfileDataLoadingState)
+                        LinearProgressIndicator() ,
+                    if (state is ShopAppUpdateProfileDataLoadingState)
+                        SizedBox(height: 20,) ,
+                    customTextFormField(
+                        controller: nameController,
+                        type: TextInputType.text,
+                        validate: (String value)
+                        {
+                          if (value.isEmpty)
+                            return 'name cannot be empty' ;
+                          return null ;
+                        },
+                        label: 'Name',
+                        prfixIcon: Icons.person) ,
+                    SizedBox(height: 10,) ,
+                    customTextFormField(
+                        controller: emailController,
+                        type: TextInputType.emailAddress,
+                        validate: (String value)
+                        {
+                          if (value.isEmpty)
+                            return 'email cannot be empty' ;
+                          return null ;
+                        },
+                        label: 'Email',
+                        prfixIcon: Icons.email) ,
+                    SizedBox(height: 10,) ,
+                    customTextFormField(
+                        controller: phoneController,
+                        type: TextInputType.number,
+                        validate: (String value)
+                        {
+                          if (value.isEmpty)
+                            return 'phone cannot be empty' ;
+                          return null ;
+                        },
+                        label: 'Phone',
+                        prfixIcon: Icons.phone) ,
+                    SizedBox(height: 10,) ,
+                    customButton(function: (){
+                      cubit.updateProfileData(name: nameController.text, phone: phoneController.text, email: emailController.text) ;
+                    }, text: 'UPDATE'),
+
+                    SizedBox(height: 10,) ,
+                    customButton(function: (){
+                      navigateToAndRemove(context, ShopLoginScreen()) ;
+                    }, text: 'LOGOUT')
+                  ],
+                ),
+              ),
             ),
           ),
         ) ;
