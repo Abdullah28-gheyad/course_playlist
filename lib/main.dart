@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firstproject/layout/news_app/cubit/cubit.dart';
 import 'package:firstproject/layout/news_app/cubit/states.dart';
 import 'package:firstproject/layout/news_app/news_home_layout.dart';
@@ -20,7 +21,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'modules/shop_app/shop_login/shop_login_screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   Bloc.observer = MyBlocObserver();
   DioHelper.init();
   runApp(const MyApp()); //run the app

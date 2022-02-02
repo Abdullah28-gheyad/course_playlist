@@ -42,6 +42,10 @@ dependencies:
   conditional_builder_null_safety: ^0.0.6
   carousel_slider: ^4.0.0
 
+  #firebase
+  firebase_core: ^1.12.0
+
+
 
 
 
