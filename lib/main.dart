@@ -20,6 +20,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'modules/shop_app/shop_login/shop_login_screen.dart';
+import 'modules/social_app/social_login/social_login_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -101,7 +102,7 @@ class MyApp extends StatelessWidget //abst class  //inhrt wid
                       ? ThemeMode.light
                       : ThemeMode.dark,
                   debugShowCheckedModeBanner: false,
-                  home: ShopLoginScreen(),
+                  home: SocialLoginScreen(),
                 );
               },
             ) ;
