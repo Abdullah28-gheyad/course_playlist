@@ -1,3 +1,6 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:firstproject/layout/social_app/cubit/cubit.dart';
+import 'package:firstproject/layout/social_app/social_layout_screen.dart';
 import 'package:firstproject/modules/social_app/social_register/cubit/cubit.dart';
 import 'package:firstproject/modules/social_app/social_register/cubit/states.dart';
 import 'package:firstproject/shared/components/components.dart';
@@ -20,7 +23,13 @@ class SocialRegisterScreen extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => SocialRegisterCubit(),
       child: BlocConsumer<SocialRegisterCubit, SocialRegisterStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is SocialCreateSuccessState)
+            {
+              SocialCubit.get(context).getUserData() ;
+              navigateToAndRemove(context, SocialLayoutScreen());
+            }
+        },
         builder: (context, state) {
           var cubit = SocialRegisterCubit.get(context);
           return Scaffold(
@@ -103,17 +112,21 @@ class SocialRegisterScreen extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        customButton(
-                          function: () {
-                            if (formKey.currentState.validate()) {
-                              cubit.userRegister(
-                                  email: emailController.text,
-                                  name: nameController.text,
-                                  phone: phoneController.text,
-                                  password: passwordController.text);
-                            }
-                          },
-                          text: 'Register',
+                        ConditionalBuilder(
+                          condition:state is! SocialRegisterLoadingState ,
+                          builder: (context)=>customButton(
+                            function: () {
+                              if (formKey.currentState.validate()) {
+                                cubit.userRegister(
+                                    email: emailController.text,
+                                    name: nameController.text,
+                                    phone: phoneController.text,
+                                    password: passwordController.text);
+                              }
+                            },
+                            text: 'Register',
+                          ),
+                          fallback:(context)=>Center(child: CircularProgressIndicator()) ,
                         ),
                       ],
                     ),

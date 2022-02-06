@@ -6,6 +6,7 @@ import 'package:firstproject/layout/news_app/cubit/states.dart';
 import 'package:firstproject/layout/news_app/news_home_layout.dart';
 import 'package:firstproject/layout/shop_layout/cuibt/cubit.dart';
 import 'package:firstproject/layout/shop_layout/cuibt/states.dart';
+import 'package:firstproject/layout/social_app/cubit/cubit.dart';
 import 'package:firstproject/layout/todo_app/home_screen.dart';
 import 'package:firstproject/modules/bmi/bmi_home_screen.dart';
 import 'package:firstproject/modules/bmi/bmi_result_screen.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget //abst class  //inhrt wid
       // ..getScienceData(),),
         ),
         BlocProvider(create: (BuildContext context) =>ShopAppCubit()..getCategoryData()),
+        BlocProvider(create: (BuildContext context) =>SocialCubit()),
       ],
         child: BlocConsumer<ShopAppCubit , ShopAppStates>(
           listener: (context,state){},

@@ -1,3 +1,6 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:firstproject/layout/social_app/cubit/cubit.dart';
+import 'package:firstproject/layout/social_app/social_layout_screen.dart';
 import 'package:firstproject/modules/social_app/social_login/cubit/cubit.dart';
 import 'package:firstproject/modules/social_app/social_login/cubit/states.dart';
 import 'package:firstproject/modules/social_app/social_register/social_register_screen.dart';
@@ -17,7 +20,13 @@ class SocialLoginScreen extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => SocialLoginCubit(),
       child: BlocConsumer<SocialLoginCubit, SocialLoginStates>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is SocialLoginSuccessState)
+            {
+              SocialCubit.get(context).getUserData() ;
+              navigateToAndRemove(context, SocialLayoutScreen());
+            }
+        },
         builder: (context, state) {
           var cubit = SocialLoginCubit.get(context);
           return Scaffold(
@@ -74,15 +83,19 @@ class SocialLoginScreen extends StatelessWidget {
                         SizedBox(
                           height: 10,
                         ),
-                        customButton(
-                          function: () {
-                            if (formKey.currentState.validate()) {
-                              cubit.userLogin(
-                                  email: emailController.text,
-                                  password: passwordController.text);
-                            }
-                          },
-                          text: 'LOGIN',
+                        ConditionalBuilder(
+                         fallback: (context)=>Center(child: CircularProgressIndicator()),
+                          builder: (context)=> customButton(
+                            function: () {
+                              if (formKey.currentState.validate()) {
+                                cubit.userLogin(
+                                    email: emailController.text,
+                                    password: passwordController.text);
+                              }
+                            },
+                            text: 'LOGIN',
+                          ),
+                          condition:state is! SocialLoginLoadingState ,
                         ),
                         SizedBox(
                           height: 10,

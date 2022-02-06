@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstproject/models/social_app/social_user_model.dart';
 import 'package:firstproject/modules/social_app/social_register/cubit/states.dart';
+import 'package:firstproject/shared/components/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class SocialRegisterCubit extends Cubit <SocialRegisterStates>
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password)
     .then((value){
-
+      uId = value.user.uid ;
       emit(SocialRegisterSuccessState()) ;
       createUser(phone: phone,name: name,email: email ,password: password , uId: value.user.uid) ;
     })
