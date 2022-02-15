@@ -46,7 +46,7 @@ class SocialRegisterCubit extends Cubit <SocialRegisterStates>
   }
       )
   {
-    model = SocialUserModel(password: password , uId: uId ,email: email , name: name , phone: phone) ;
+    model = SocialUserModel(password: password , uId: uId ,email: email , name: name , phone: phone , image: 'https://img.freepik.com/free-photo/man-with-glad-face-expression-keeps-arms-folded-has-positive-talk-with-friend-discuss-something-funny-wears-warm-jumper-poses-beige_273609-56351.jpg?w=740' , cover: 'https://img.freepik.com/free-vector/background-with-white-feathers-with-gold-glitter-confetti-empty-space-vector-poster-with-realistic-illustration-flying-golden-colored-bird-angel-quills-sparkles-ribbons_107791-9934.jpg?w=740',bio: 'write your bio ...') ;
       FirebaseFirestore.instance
           .collection('users')
           .doc(uId)

@@ -5,7 +5,10 @@ class SocialUserModel
   String password ;
   String email ;
   String phone ;
-  SocialUserModel({this.password,this.email,this.name,this.phone,this.uId});
+  String image ;
+  String cover ;
+  String bio ;
+  SocialUserModel({this.password,this.email,this.name,this.phone,this.uId,this.cover,this.image,this.bio});
   SocialUserModel.fromJson(Map<String,dynamic>json)
   {
     uId=json['uId'];
@@ -13,6 +16,9 @@ class SocialUserModel
     password=json['password'];
     email=json['email'];
     phone=json['phone'];
+    image=json['image'];
+    cover=json['cover'];
+    bio=json['bio'];
   }
 
   Map<String,dynamic> toMap()
@@ -23,6 +29,9 @@ class SocialUserModel
       'phone':phone ,
       'password':password ,
       'uId':uId ,
+      'image':image ,
+      'cover':cover ,
+      'bio':bio ,
     } ;
   }
 
