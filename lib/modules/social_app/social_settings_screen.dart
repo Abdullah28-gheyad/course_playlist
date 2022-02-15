@@ -1,8 +1,11 @@
 import 'package:firstproject/layout/social_app/cubit/cubit.dart';
 import 'package:firstproject/layout/social_app/cubit/states.dart';
+import 'package:firstproject/shared/components/components.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'edit_profile_screen.dart';
 
 class SocialSettingsScreen extends StatelessWidget {
 
@@ -47,7 +50,9 @@ class SocialSettingsScreen extends StatelessWidget {
                 children: [
                   Expanded(child: OutlinedButton(onPressed: (){}, child: Text('Edit'))) ,
                   SizedBox(width: 5,) ,
-                  IconButton(onPressed: (){}, icon: Icon(Icons.edit , color: Colors.blue,size: 15,))
+                  IconButton(onPressed: (){
+                    navigateTo(context, SocialEditProfileScreen()) ;
+                  }, icon: Icon(Icons.edit , color: Colors.blue,size: 15,))
                 ],
               )
             ],
